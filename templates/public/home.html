@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ school.school_name if school else 'Kaimosi National Polytechnic – Mbale Town Campus' }}{% endblock %}
+{% block content %}
+<section class="hero" {% if school and school.hero_image %}style="background-image:linear-gradient(90deg,rgba(7,59,102,.88),rgba(7,59,102,.48),rgba(19,168,199,.18)),url('{{ url_for('public.uploaded_file', filename=school.hero_image) }}');"{% endif %}><div class="container hero-inner">
+<div class="hero-kicker">WELCOME TO KAIMOSI NATIONAL POLYTECHNIC</div>
+<h1>{{ school.school_name if school else 'KAIMOSI NATIONAL POLYTECHNIC – MBALE TOWN CAMPUS' }}</h1>
+<p>{{ school.motto if school and school.motto else 'Mbale Town Campus' }}</p>
+<a class="btn btn-primary" href="{{ url_for('public.about') }}">Discover Our School</a>
+<a class="btn btn-light" href="{{ url_for('public.contact') }}">Contact Us</a>
+</div></section>
+
+<section class="quick"><div class="container quick-grid">
+<div class="quick-card"><h3>Admissions</h3><p>Learn about joining our school and available opportunities.</p></div>
+<div class="quick-card"><h3>Academics</h3><p>Quality teaching, learning and student development.</p></div>
+<div class="quick-card"><h3>News</h3><p>Latest school announcements and activities.</p></div>
+<div class="quick-card"><h3>Downloads</h3><p>Forms, notices, newsletters and school documents.</p></div>
+</div></section>
+
+<section class="section"><div class="container feature-grid">
+<div>
+<div class="section-head" style="text-align:left;margin:0 0 15px"><div class="eyebrow">WHO WE ARE</div><h2>About Our School</h2></div>
+<p>{{ school.about if school and school.about else 'Welcome to our school website. Update this information from the administration dashboard.' }}</p>
+<a class="btn btn-primary" href="{{ url_for('public.about') }}">Read More</a>
+</div>
+<img class="feature-img" src="{{ url_for('static', filename='images/hero-school.svg') }}" alt="School campus">
+</div></section>
+
+<section class="section section-alt"><div class="container">
+<div class="section-head"><div class="eyebrow">OUR FOUNDATION</div><h2>Vision, Mission & Values</h2></div>
+<div class="values">
+<div class="value"><h3>Vision</h3><p>{{ school.vision if school and school.vision else 'To be a leading centre of excellence in education.' }}</p></div>
+<div class="value"><h3>Mission</h3><p>{{ school.mission if school and school.mission else 'To provide quality education and develop responsible, confident and capable learners.' }}</p></div>
+<div class="value"><h3>Core Values</h3><p>{{ school.values if school and school.values else 'Integrity, Discipline, Excellence, Respect, Teamwork' }}</p></div>
+</div></div></section>
+
+<section class="section"><div class="container">
+<div class="section-head"><div class="eyebrow">UPDATES</div><h2>Latest News</h2></div>
+{% if news %}
+<div class="cards">{% for item in news[:3] %}<article class="card">
+{% if item.image %}<img src="{{ url_for('static', filename='uploads/' + item.image) }}" alt="{{ item.title }}">{% endif %}
+<div class="card-body"><h3>{{ item.title }}</h3><p>{{ item.content[:180] }}{% if item.content|length > 180 %}...{% endif %}</p></div>
+</article>{% endfor %}</div>
+{% else %}<p style="text-align:center">No news published yet.</p>{% endif %}
+</div></section>
+{% endblock %}

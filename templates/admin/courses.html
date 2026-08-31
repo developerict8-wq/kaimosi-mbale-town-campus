@@ -1,0 +1,4 @@
+{% extends 'admin/layout.html' %}{% block content %}
+<div class="head"><div><h1>Courses & Programmes</h1><p>Manage the courses displayed publicly.</p></div><a class="btn" href="{{url_for('admin.course_add')}}">+ Add Course</a></div>
+<div class="table-wrap"><table><tr><th>Course</th><th>Department</th><th>Level</th><th>Duration</th><th>Actions</th></tr>
+{% for x in items %}<tr><td><b>{{x.name}}</b><br><small>{{x.code or ''}}</small></td><td>{{x.department.name if x.department else '—'}}</td><td>{{x.level or '—'}}</td><td>{{x.duration or '—'}}</td><td><a href="{{url_for('admin.course_edit',id=x.id)}}">Edit</a> <form class="inline" method="post" action="{{url_for('admin.course_delete',id=x.id)}}" onsubmit="return confirm('Delete this course?')"><button>Delete</button></form></td></tr>{% else %}<tr><td colspan="5">No courses yet.</td></tr>{% endfor %}</table></div>{% endblock %}

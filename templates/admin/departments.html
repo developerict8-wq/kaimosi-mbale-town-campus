@@ -1,0 +1,5 @@
+{% extends 'admin/layout.html' %}{% block content %}
+<div class="head"><div><h1>Departments</h1><p>Manage academic departments.</p></div><a class="btn" href="{{url_for('admin.department_add')}}">+ Add Department</a></div>
+<div class="table-wrap"><table><tr><th>Name</th><th>Head</th><th>Courses</th><th>Actions</th></tr>
+{% for x in items %}<tr><td><b>{{x.name}}</b><br><small>{{x.description or ''}}</small></td><td>{{x.head or '—'}}</td><td>{{x.courses|length}}</td><td><a href="{{url_for('admin.department_edit',id=x.id)}}">Edit</a> <form class="inline" method="post" action="{{url_for('admin.department_delete',id=x.id)}}" onsubmit="return confirm('Delete department and its courses?')"><button>Delete</button></form></td></tr>{% else %}<tr><td colspan="4">No departments yet.</td></tr>{% endfor %}
+</table></div>{% endblock %}

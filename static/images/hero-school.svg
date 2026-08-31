@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800">
+<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#073b66"/><stop offset="1" stop-color="#13a8c7"/></linearGradient></defs>
+<rect width="1600" height="800" fill="url(#g)"/>
+<rect x="160" y="430" width="1280" height="220" fill="#ffffff" opacity=".18"/>
+<polygon points="100,430 800,160 1500,430" fill="#ffffff" opacity=".22"/>
+<rect x="250" y="500" width="170" height="150" fill="#fff" opacity=".2"/>
+<rect x="715" y="500" width="170" height="150" fill="#fff" opacity=".2"/>
+<rect x="1180" y="500" width="170" height="150" fill="#fff" opacity=".2"/>
+<text x="800" y="95" text-anchor="middle" fill="#fff" font-family="Arial" font-size="54" font-weight="700">KAIMOSI NATIONAL POLYTECHNIC</text>
+<text x="800" y="140" text-anchor="middle" fill="#b9f2ff" font-family="Arial" font-size="25">MBALE TOWN CAMPUS</text>
+</svg>

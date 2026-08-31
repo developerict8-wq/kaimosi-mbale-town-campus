@@ -1,0 +1,31 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="head">
+  <div>
+    <h1>Dashboard</h1>
+    <p>KAIMOSI NATIONAL POLYTECHNIC — MBALE TOWN CAMPUS</p>
+  </div>
+  <a class="btn" href="{{ url_for('public.home') }}" target="_blank">View Website</a>
+</div>
+
+<div class="stats">
+  <div><span>Staff</span><strong>{{ staff_count }}</strong><a href="{{ url_for('admin.staff_list') }}">Manage →</a></div>
+  <div><span>News</span><strong>{{ news_count }}</strong><a href="{{ url_for('admin.news_list') }}">Manage →</a></div>
+  <div><span>Events</span><strong>{{ event_count }}</strong><a href="{{ url_for('admin.events_list') }}">Manage →</a></div>
+  <div><span>Gallery Photos</span><strong>{{ gallery_count }}</strong><a href="{{ url_for('admin.gallery_list') }}">Manage →</a></div>
+  <div><span>Documents</span><strong>{{ document_count }}</strong><a href="{{ url_for('admin.documents_list') }}">Manage →</a></div>
+  <div><span>Messages</span><strong>{{ message_count }}</strong><a href="{{ url_for('admin.messages') }}">View →</a></div>
+<div><span>Courses</span><strong>{{ course_count }}</strong><a href="{{ url_for("admin.courses") }}">Manage →</a></div><div><span>Departments</span><strong>{{ department_count }}</strong><a href="{{ url_for("admin.departments") }}">Manage →</a></div><div><span>Announcements</span><strong>{{ announcement_count }}</strong><a href="{{ url_for("admin.announcements") }}">Manage →</a></div></div>
+
+<section class="panel">
+  <h2>Website Management</h2>
+  <div class="quick">
+    <a href="{{ url_for('admin.school') }}"><b>🏫 Campus Information</b><span>Logo, hero photo, contact details and institutional profile</span></a>
+    <a href="{{ url_for('admin.news_add') }}"><b>📰 Publish News</b><span>Create a new announcement with an image</span></a>
+    <a href="{{ url_for('admin.event_add') }}"><b>📅 Add Event</b><span>Publish an upcoming campus event</span></a>
+    <a href="{{ url_for('admin.gallery_add') }}"><b>📸 Upload Photo</b><span>Add a campus-life photograph</span></a>
+    <a href="{{ url_for('admin.document_add') }}"><b>📄 Upload Document</b><span>Add a prospectus, form or notice</span></a>
+    <a href="{{ url_for('admin.staff_add') }}"><b>👥 Add Staff</b><span>Add a staff member and photograph</span></a>
+  </div>
+</section>
+{% endblock %}

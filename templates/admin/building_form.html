@@ -1,0 +1,10 @@
+{% extends 'admin/layout.html' %}{% block content %}<h1>{{'Edit' if item else 'Add'}} Building / Facility</h1>
+<form class="form" method="post" enctype="multipart/form-data"><div class="grid">
+<label>Building Name<input name="name" required value="{{item.name if item else ''}}"></label>
+<label>Category<input name="category" placeholder="Administration / Classroom / Laboratory / Library" value="{{item.category if item else ''}}"></label>
+<label>Location / Block<input name="location" value="{{item.location if item else ''}}"></label>
+<label>Status<select name="status"><option {% if not item or item.status=='Active' %}selected{% endif %}>Active</option><option {% if item and item.status=='Under development' %}selected{% endif %}>Under development</option><option {% if item and item.status=='Closed' %}selected{% endif %}>Closed</option></select></label>
+<label class="full">Building Photograph<input type="file" name="image" accept="image/*">{% if item and item.image %}<br><img src="{{url_for('public.uploaded_file',filename=item.image)}}" style="max-width:360px;max-height:180px;margin-top:10px;border-radius:8px">{% endif %}</label>
+<label class="full">Description<textarea name="description">{{item.description if item else ''}}</textarea></label>
+<label class="full">Facilities Available<textarea name="facilities" placeholder="Computer laboratory, offices, classrooms, library, workshop...">{{item.facilities if item else ''}}</textarea></label>
+</div><button class="btn">Save Building</button></form>{% endblock %}

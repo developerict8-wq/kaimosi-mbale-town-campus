@@ -1,0 +1,2 @@
+{% extends 'admin/layout.html' %}{% block content %}<h1>{{'Edit' if item else 'Add'}} Department</h1>
+<form class="form" method="post"><label>Name<input name="name" required value="{{item.name if item else ''}}"></label><label>Head<input name="head" value="{{item.head if item else ''}}"></label><label class="full">Description<textarea name="description">{{item.description if item else ''}}</textarea></label><button class="btn">Save Department</button></form>{% endblock %}
